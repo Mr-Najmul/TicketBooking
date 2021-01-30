@@ -42,12 +42,16 @@
         <div id="bookingArea" class="booking-form">
             <h3>Book Ocean Time</h3>
             <div class="input-group">
+                <label for="">Your Name</label>
+                <input id="your-name" class="inp-style" type="text" name="" placeholder="Najmul">
+            </div>
+            <div class="input-group">
                 <label for="">Flying From</label>
-                <input class="inp-style" type="text" name="" placeholder="Dhake, Bangladesh">
+                <input id="travel-from"  class="inp-style" type="text" name="" placeholder="Dhake, Bangladesh">
             </div>
             <div class="input-group">
                 <label for="">Flying To</label>
-                <input class="inp-style" type="text" name="" placeholder="Barisal, Bangladesh">
+                <input id="travel-to" class="inp-style" type="text" name="" placeholder="Barisal, Bangladesh">
             </div>
             <div class="inputs">
                 <div class="input-group">
@@ -65,9 +69,10 @@
                     <input id="firstClassTicket" class="inp-style inp-width" type="number" value="0" name="">
                 </div>
                 <div class="plus-minus-btn">
-                    <p><span onclick="collectionFirstClass(true)">+</span> <span onclick="collectionFirstClass(false)">-</span></p>
+                    <p><span onclick="collectionClass('first',true)" class="mouse">+</span> <span onclick="collectionClass('first',false)" class="mouse">-</span></p>
                 </div>
             </div>
+
 
             <div class="input-group f-class">
                 <div>
@@ -75,8 +80,8 @@
                     <input id="economyClassTicket" class="inp-style inp-width" type="number" value="0" name="">
                 </div>
                 <div class="plus-minus-btn">
-                    <p> <span onclick="collectionEconomyClass(true)">+</span> <span
-                        onclick="collectionEconomyClass(false)">-</span> </p>
+                    <p> <span onclick="collectionClass('economy',true)" class="mouse">+</span> <span
+                        onclick="collectionClass('economy',false)" class="mouse">-</span> </p>
                 </div>
             </div>
             <div class="calculations">
@@ -107,7 +112,7 @@
                     </div>
                 </div>
             </div>
-            <button id="submit" class="btn-style">Book Now</button>
+            <button onclick="bookNow()" class="btn-style">Book Now</button>
         </div>
 
         <div id="submitted"> 
@@ -115,6 +120,7 @@
             <h2>Your Ticket Booking Successfully Completed</h2>
             <h2>Thanks</h2>
             </div>
+            <button id="returnBook" class="return-Book">ReturnBook</button>
         </div>
     </main>
 

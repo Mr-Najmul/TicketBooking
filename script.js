@@ -1,64 +1,61 @@
+//Function For ticket Booking
 
-//First Class Ticket Function  
-function collectionFirstClass(isIncrease){
-    const firstClassInput= document.getElementById('firstClassTicket');
-    const firstClassCount=parseInt(firstClassInput.value);
-    let firstClassNewCount=firstClassCount;
-    if(isIncrease == true){
-    firstClassNewCount=firstClassCount + 1;
-    
-    }if(isIncrease == false && firstClassCount >0){
-    firstClassNewCount=firstClassCount - 1;
+function collectionClass(ticketClass, isIncrease) {
+    const ClassInput = document.getElementById(ticketClass + 'ClassTicket');
+    const ClassCount = parseInt(ClassInput.value);
+    let ClassNewCount = ClassCount;
+    if (isIncrease == true) {
+        ClassNewCount = ClassCount + 1;
+
     }
-    firstClassInput.value=firstClassNewCount;
+    if (isIncrease == false && ClassCount > 0) {
+        ClassNewCount = ClassCount - 1;
+    }
+    ClassInput.value = ClassNewCount;
     calculateTotalAmount();
-    
-    }
-    
-    //Economy Class Ticket Function 
-    function collectionEconomyClass(isIncrease){
-    const economyClassInput= document.getElementById('economyClassTicket');
-    const economyClassCount=parseInt(economyClassInput.value);
-    let economyClassNewCount=economyClassCount;
-    if(isIncrease == true){
-    economyClassNewCount=economyClassCount + 1;
-    
-    }if(isIncrease == false && economyClassCount >0){
-    economyClassNewCount=economyClassCount - 1;
-    }
-    economyClassInput.value=economyClassNewCount;
-    calculateTotalAmount();
-    
-    }
 
-    // Amount Calculate Function
+}
 
-    function totalAmount(value, id){
+
+// Amount Calculate Function
+
+function totalAmount(value, id) {
     document.getElementById(id).innerText = value;
-    }
-    
-    function calculateTotalAmount(){
-    const firstClassCost= parseInt(document.getElementById('firstClassTicket').value)*150;
-    const economyClassCost= parseInt(document.getElementById('economyClassTicket').value)*100;
-    
-    const subTotal = firstClassCost + economyClassCost;
+}
+
+function calculateTotalAmount() {
+    const firstClassAmount = parseInt(document.getElementById('firstClassTicket').value) * 150;
+    const economyClassCost = parseInt(document.getElementById('economyClassTicket').value) * 100;
+
+    const subTotal = firstClassAmount + economyClassCost;
     const vat = subTotal * 0.1;
-    const grandTotal = subTotal + vat;
-    
+    const totalTaka = subTotal + vat;
+
     totalAmount(subTotal, "subTotal")
     totalAmount(vat, "vat")
-    totalAmount(grandTotal, "total")
+    totalAmount(totalTaka, "total")
+}
+
+
+///Function For Booking
+
+function bookNow() {
+    const validation = parseInt(document.getElementById('total').innerText);
+    if (validation < 1) {
+        alert("please select minimum 1 ticket")
+        return false;
     }
+    document.getElementById('bookingArea').style.display = 'none';
+    document.getElementById('submitted').style.display = 'block';
 
- 
-// Submitted Function
+}
 
-const submit = document.getElementById('submit');
-submit.addEventListener('click', function(){
- const bookingArea = document.getElementById('bookingArea')
- bookingArea.style.display ="none";
 
- const submitted = document.getElementById('submitted');
- submitted.style.display = "block"
+
+//For Return Book 
+
+const returnBook = document.getElementById('returnBook');
+returnBook.addEventListener('click', function () {
+    document.getElementById('bookingArea').style.display = 'block';
+    document.getElementById('submitted').style.display = 'none';
 })
-
